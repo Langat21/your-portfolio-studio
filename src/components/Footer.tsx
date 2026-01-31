@@ -1,4 +1,4 @@
-import { Twitter, Linkedin, Github, Mail } from 'lucide-react';
+import { Linkedin, Github, Mail } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,9 +11,8 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/brian-lang-at-600011187', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/Langat21', label: 'GitHub' },
     { icon: Mail, href: 'mailto:hello@example.com', label: 'Email' },
   ];
 
@@ -26,7 +25,7 @@ const Footer = () => {
             href="#home"
             className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
           >
-            YourName<span className="text-primary">.</span>
+            Langat.K<span className="text-primary">.</span>
           </a>
 
           {/* Navigation */}
@@ -62,7 +61,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} YourName. All rights reserved.
+            © {currentYear} Langat.K. All rights reserved.
           </p>
         </div>
       </div>

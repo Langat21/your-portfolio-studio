@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Briefcase, Users, Clock, Rocket, Globe } from 'lucide-react';
 
 const stats = [
-  { number: 50, suffix: '+', label: 'Projects', icon: Briefcase },
-  { number: 40, suffix: '+', label: 'Clients', icon: Users },
+  { number: 30, suffix: '+', label: 'Projects', icon: Briefcase },
+  { number: 25, suffix: '+', label: 'Clients', icon: Users },
   { number: 10, suffix: '+', label: 'Years in Dev', icon: Clock },
   { number: 15, suffix: '+', label: 'Live Apps', icon: Rocket },
   { number: 35, suffix: '+', label: 'Websites', icon: Globe },

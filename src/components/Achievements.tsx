@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Rocket, Heart, Star } from 'lucide-react';
 
 const achievements = [
-  { number: '50+', label: 'Projects Launched', icon: Rocket },
-  { number: '40+', label: 'Clients Served', icon: Heart },
+  { number: '30+', label: 'Projects Launched', icon: Rocket },
+  { number: '25+', label: 'Clients Served', icon: Heart },
   { number: '96%', label: 'Satisfaction Rate', icon: Star },
 ];
 

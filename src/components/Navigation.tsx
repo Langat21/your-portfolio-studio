@@ -20,9 +20,8 @@ const Navigation = () => {
   ];
 
   const socialLinks = [
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/brian-lang-at-600011187', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/Langat21', label: 'GitHub' },
   ];
 
   return (
@@ -40,7 +39,7 @@ const Navigation = () => {
             href="#home"
             className="text-xl font-bold text-foreground hover:text-primary transition-colors"
           >
-            YourName<span className="text-primary">.</span>
+            Langat.K<span className="text-primary">.</span>
           </a>
 
           {/* Desktop Navigation */}

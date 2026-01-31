@@ -16,7 +16,7 @@ const Hero = () => {
               </p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight opacity-0 animate-fade-up animate-delay-100">
                 Hi, I'm{' '}
-                <span className="text-gradient">Your Name</span>.
+                <span className="text-gradient">Langat.K</span>.
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-lg opacity-0 animate-fade-up animate-delay-200">
                 I press buttons and interfaces happen. Full-stack developer crafting digital experiences.

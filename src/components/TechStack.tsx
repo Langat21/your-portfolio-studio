@@ -1,16 +1,31 @@
 import { useEffect, useRef, useState } from 'react';
 
-const technologies = [
-  { name: 'React', icon: '⚛️' },
-  { name: 'Next.js', icon: '▲' },
-  { name: 'TypeScript', icon: '📘' },
-  { name: 'Node.js', icon: '🟢' },
-  { name: 'Express', icon: '🚂' },
-  { name: 'MongoDB', icon: '🍃' },
-  { name: 'PostgreSQL', icon: '🐘' },
-  { name: 'Docker', icon: '🐳' },
-  { name: 'GitHub', icon: '🐙' },
-  { name: 'Figma', icon: '🎨' },
+const categories = [
+  {
+    title: 'Product & Frontend',
+    items: [
+      { name: 'Bubble.io', note: 'Certified' },
+      { name: 'React', note: null },
+      { name: 'Tailwind', note: null },
+    ],
+  },
+  {
+    title: 'Backend & Infrastructure',
+    items: [
+      { name: 'Xano', note: 'Certified' },
+      { name: 'Supabase', note: null },
+      { name: 'AWS', note: 'DynamoDB / Lambda' },
+      { name: 'Node.js', note: null },
+    ],
+  },
+  {
+    title: 'Automation',
+    items: [
+      { name: 'n8n', note: null },
+      { name: 'Make', note: null },
+      { name: 'OpenAI / Claude APIs', note: null },
+    ],
+  },
 ];
 
 const TechStack = () => {
@@ -20,49 +35,49 @@ const TechStack = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
       { threshold: 0.1 }
     );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
+    if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
     <section className="section-padding" ref={ref}>
       <div className="container-max">
-        {/* Section Header */}
-        <div className={`text-center max-w-2xl mx-auto mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="text-primary font-medium tracking-wide mb-4">TECH STACK</p>
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Technologies I Work With
-          </h2>
-        </div>
+        <p
+          className={`text-xs font-medium tracking-[0.3em] text-muted-foreground uppercase mb-12 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+        >
+          The Stack
+        </p>
 
-        {/* Tech Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {technologies.map((tech, index) => (
+        <div className="grid md:grid-cols-3 gap-12 md:gap-16">
+          {categories.map((category, catIndex) => (
             <div
-              key={tech.name}
-              className={`group flex flex-col items-center justify-center p-6 rounded-xl bg-card border border-border hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 hover:-translate-y-1 ${
+              key={category.title}
+              className={`transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
-              style={{
-                transitionDelay: isVisible ? `${index * 50}ms` : '0ms',
-              }}
+              style={{ transitionDelay: isVisible ? `${catIndex * 150}ms` : '0ms' }}
             >
-              <span className="text-4xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                {tech.icon}
-              </span>
-              <span className="text-sm font-medium text-foreground">
-                {tech.name}
-              </span>
+              <h3 className="text-sm font-semibold text-foreground mb-6 tracking-wide">
+                {category.title}
+              </h3>
+              <ul className="space-y-3">
+                {category.items.map((item) => (
+                  <li key={item.name} className="flex items-baseline gap-2">
+                    <span className="text-sm text-muted-foreground">{item.name}</span>
+                    {item.note && (
+                      <span className="text-[10px] font-medium tracking-wider uppercase text-muted-foreground/60 border border-border rounded px-1.5 py-0.5">
+                        {item.note}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

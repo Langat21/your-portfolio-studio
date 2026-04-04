@@ -4,53 +4,53 @@ import { useEffect, useRef, useState } from 'react';
 
 const entries = [
   {
-    company: 'Studio (Self-Founded)',
-    role: 'Founder & Lead Engineer',
-    date: '2023 — Present',
+    company: 'Umbrella Financial Services',
+    role: 'Low code Developer - Bubble',
+    date: 'Apr 2023 — May 2024',
     summary:
-      'Building high-performance SaaS MVPs for startups and enterprises. Architecting AI-native products with full-stack pipelines using React, Xano, and automation layers.',
+      'Developed high-performance internal financial solution. Architecting business logic, scalable database and backend automation layers.',
   },
   {
-    company: 'Enterprise SaaS Client',
-    role: 'Senior Software Engineer',
-    date: '2022 — 2023',
+    company: '​Design Conformity',
+    role: 'Software Developer',
+    date: 'Sep 2023 — Jun 2025',
     summary:
-      'Architected multi-tenant B2B strategy platforms serving 10K+ users. Led migration from monolithic architecture to microservices on AWS Lambda and DynamoDB.',
+      'Developing & Enhancing a Carbon efficiency rating software: help furniture manufacturers produce more sustainable products by measuring and reporting their carbon efficiency. Gold Certified with EcoVardis.',
   },
   {
-    company: 'Fintech Startup',
-    role: 'Full-Stack Engineer',
-    date: '2021 — 2022',
+    company: 'Market Leader Technologies',
+    role: '​Low code Developer - Bubble/Xano',
+    date: 'Jun 2024 — Sep 2025',
     summary:
-      'Migrated Bubble backends to Xano/AWS for 10x scalability. Built real-time payment dashboards with React and Supabase, processing $2M+ monthly.',
+      'Migrated a solar installers platform Bubble backends to Xano for max scalability. Built real-time salesforce synced dashboards with Bubble and Xano, processing 1K+ leads daily.',
   },
   {
-    company: 'Agency / Contract Work',
+    company: 'Tiny Builds',
     role: 'Product Engineer',
     date: '2020 — 2021',
     summary:
-      'Delivered 15+ client projects across e-commerce, healthcare, and education verticals. Established automation workflows with n8n and Make, reducing manual ops by 80%.',
+      'Developed a B2C mortgage platform handling lead intake, eligibility checks, loan processing, and automated approval workflows with secure financial data handling; A custom Bubble plugin integrating Confirmo crypto payments with full invoice lifecycle, webhooks, and real-time payment status updates; A Bubble plugin enabling seamless n8n workflow triggers, two-way data sync, and AI agent automation directly from Bubble apps.',
   },
   {
-    company: 'EdTech Platform',
-    role: 'Frontend Engineer',
-    date: '2019 — 2020',
+    company: 'FlexBuild',
+    role: 'Backend Engineer',
+    date: 'Jun 2025 — Oct 2025',
     summary:
-      'Built responsive learning interfaces with React and Tailwind CSS. Implemented real-time collaboration features and optimized Core Web Vitals scores to 95+.',
+      'Developing Xano Backend function for AI-powered solutions: AI Tender Library and Kush Law.',
   },
   {
-    company: 'Digital Agency',
-    role: 'Junior Developer',
+    company: 'No Code Creations',
+    role: 'Low code Developer',
     date: '2018 — 2019',
     summary:
-      'Developed custom WordPress and Bubble.io solutions for SMBs. Introduced component-based architecture patterns that reduced development time by 40%.',
+      'Leading a dynamic team in developing solutions: Werkling, Cillionaire, and Snapphoto.',
   },
   {
-    company: 'Freelance',
-    role: 'Web Developer',
-    date: '2016 — 2018',
+    company: 'Upwork',
+    role: 'Software Developer',
+    date: 'Jan 2022 — Present',
     summary:
-      'Started building websites and web apps for local businesses. Learned the fundamentals of full-stack development, shipping 30+ projects across diverse industries.',
+      'Senior Bubble.io Developer – Backend, APIs & Integrations; Bubble Plugin & Platform Extension Developer; Bubble.io Developer – AI-Powered & Production Systems; TypeScript Full-Stack Engineer – App Refactoring, QA Engineering & API Integrations',
   },
 ];
 
@@ -111,7 +111,7 @@ const History = () => {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
-            Work History
+            WORK HISTORY
           </p>
 
           {/* Timeline */}

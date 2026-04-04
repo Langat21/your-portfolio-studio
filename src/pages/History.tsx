@@ -41,7 +41,7 @@ const entries = [
   {
     company: 'No Code Creations',
     role: 'Low code Developer',
-    date: '2018 — 2019',
+    date: 'Jan 2024 — Feb 2026',
     summary:
       'Leading a dynamic team in developing solutions: Werkling, Cillionaire, and Snapphoto.',
   },

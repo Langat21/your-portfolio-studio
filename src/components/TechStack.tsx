@@ -2,28 +2,49 @@ import { useEffect, useRef, useState } from 'react';
 
 const categories = [
   {
-    title: 'Product & Frontend',
+    title: 'Languages & Frameworks',
     items: [
-      { name: 'Bubble.io', note: 'Certified' },
       { name: 'React', note: null },
-      { name: 'Tailwind', note: null },
-    ],
-  },
-  {
-    title: 'Backend & Infrastructure',
-    items: [
-      { name: 'Xano', note: 'Certified' },
-      { name: 'Supabase', note: null },
-      { name: 'AWS', note: 'DynamoDB / Lambda' },
+      { name: 'Next.js', note: null },
+      { name: 'React Native', note: null },
+      { name: 'TypeScript', note: null },
+      { name: 'Python', note: null },
+      { name: 'FastAPI', note: null },
       { name: 'Node.js', note: null },
     ],
   },
   {
-    title: 'Automation',
+    title: 'Backend & Databases',
     items: [
+      { name: 'REST APIs', note: null },
+      { name: 'PostgreSQL', note: null },
+      { name: 'Supabase', note: null },
+      { name: 'Xano', note: 'Certified' },
+      { name: 'Bubble', note: 'Certified' },
+      { name: 'Firebase', note: null },
+    ],
+  },
+  {
+    title: 'AI & Automation',
+    items: [
+      { name: 'OpenAI', note: null },
+      { name: 'Claude', note: null },
+      { name: 'AI Agents', note: null },
+      { name: 'Prompt Engineering', note: null },
       { name: 'n8n', note: null },
       { name: 'Make', note: null },
-      { name: 'OpenAI / Claude APIs', note: null },
+      { name: 'Zapier', note: null },
+    ],
+  },
+  {
+    title: 'Cloud & Architecture',
+    items: [
+      { name: 'SaaS Architecture', note: null },
+      { name: 'Multi-Tenant Systems', note: null },
+      { name: 'API Design', note: null },
+      { name: 'System Design', note: null },
+      { name: 'Git / GitHub', note: null },
+      { name: 'Vercel / Render', note: null },
     ],
   },
 ];
@@ -51,17 +72,17 @@ const TechStack = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
-          The Stack
+          Core Skills
         </p>
 
-        <div className="grid md:grid-cols-3 gap-12 md:gap-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {categories.map((category, catIndex) => (
             <div
               key={category.title}
               className={`transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
-              style={{ transitionDelay: isVisible ? `${catIndex * 150}ms` : '0ms' }}
+              style={{ transitionDelay: isVisible ? `${catIndex * 120}ms` : '0ms' }}
             >
               <h3 className="text-sm font-semibold text-foreground mb-6 tracking-wide">
                 {category.title}

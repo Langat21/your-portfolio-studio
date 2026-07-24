@@ -14,7 +14,7 @@ const Navigation = () => {
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '/' },
+    { name: 'Work', href: '/portfolio' },
     { name: 'History', href: '/history' },
   ];
 
@@ -27,7 +27,7 @@ const Navigation = () => {
       <div className="container-max px-6 md:px-12 lg:px-24">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="text-sm font-semibold tracking-wide text-foreground">
-            Langat.K
+            Brian Lang'at
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
@@ -44,6 +44,14 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
+            <a
+              href="https://cal.com/brianlangat"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-medium tracking-widest uppercase text-background bg-foreground rounded-full px-3.5 py-1.5 hover:opacity-90 transition-opacity"
+            >
+              Book a Call
+            </a>
           </div>
 
           <button
@@ -72,6 +80,15 @@ const Navigation = () => {
                   {link.name}
                 </Link>
               ))}
+              <a
+                href="https://cal.com/brianlangat"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium tracking-widest uppercase text-foreground"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Book a Call
+              </a>
             </div>
           </div>
         )}

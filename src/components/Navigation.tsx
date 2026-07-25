@@ -20,11 +20,11 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-12 lg:px-24 transition-all duration-300 ${
         isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'
       }`}
     >
-      <div className="container-max px-6 md:px-12 lg:px-24">
+      <div className="container-max">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="text-sm font-semibold tracking-wide text-foreground">
             Brian Lang'at

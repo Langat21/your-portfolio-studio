@@ -1,264 +1,174 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
+
+// Import asset placeholders (ensure these image files exist in your src/assets/ folder)
+import coreBackendImage from '@/assets/core-backend.png';
+import dataEngineeringImage from '@/assets/data-engineering.png';
+import systemArchitectureImage from '@/assets/system-architecture.jpeg';
+import asyncPipelineImage from '@/assets/async-pipeline.png';
 
 type Project = {
   name: string;
   tag: string;
   description: string;
   features?: string[];
-  workflow?: string[];
   stack: string[];
+  image?: string;
   link?: string;
 };
 
 const projects: Project[] = [
   {
-    name: 'LeadFlow',
-    tag: 'Lead Capture Infrastructure',
+    name: 'LeadFlow Production Backend',
+    tag: 'Case Study 1: AI Lead Lifecycle Automation',
     description:
-      'A complete lead intake platform connecting websites, CRMs, and automation workflows — so no lead is ever manually re-entered.',
+      'A complete multi-tenant lead intake platform and backend architecture demonstrating robust ingestion, structured AI qualification, durable background job handling, and tenant isolation.',
     features: [
-      'Public lead forms',
-      'Qualification',
-      'CRM sync',
-      'Email automation',
-      'AI summaries',
-      'Assignment',
+      'Multi-tenant organization & user model with strict workspace isolation',
+      'Lead ingestion, validation, and idempotent deduplication',
+      'FastAPI endpoints protected with token-based authentication & authorization',
+      'AI-powered lead qualification using structured JSON outputs and LLM APIs',
+      'Durable follow-up handling, retries, and comprehensive audit trails',
     ],
-    stack: ['React', 'FastAPI', 'Supabase', 'OpenAI', 'n8n'],
+    stack: ['FastAPI', 'PostgreSQL', 'Supabase', 'React', 'OpenAI', 'n8n'],
+    image: coreBackendImage,
     link: '#',
   },
   {
-    name: 'LeadRadar',
-    tag: 'Company Prospect Intelligence',
+    name: 'Data Import & Reconciliation API',
+    tag: 'Case Study 2: Production ETL Pipeline',
     description:
-      'An automated prospect discovery engine that finds businesses, enriches company information, and prepares outreach-ready lead lists — solving the first step of the sales funnel.',
+      'A high-performance FastAPI backend service designed to ingest complex CSV/Excel spreadsheets, process rows via Pandas pipelines, and commit validated records securely into PostgreSQL.',
     features: [
-      'Business scraping',
-      'Company enrichment',
-      'Contact collection',
-      'Industry categorisation',
-      'Export',
-      'CRM integration',
+      'Strict schema validation and row-level verification rules',
+      'Idempotent duplicate detection to make file imports safely rerunnable',
+      'Comprehensive valid/invalid row reporting logs and summary statistics',
+      'Batch-processed database transactions ensuring atomic multi-row updates',
     ],
-    stack: ['TypeScript', 'Playwright', 'FastAPI', 'OpenAI', 'PostgreSQL'],
+    stack: ['Python', 'FastAPI', 'Pandas', 'PostgreSQL', 'SQLAlchemy'],
+    image: dataEngineeringImage,
     link: '#',
   },
   {
-    name: 'Opslayer Prospect Scraper',
-    tag: 'AI Prospect Discovery Engine',
+    name: 'Opslayer Operational Infrastructure',
+    tag: 'Case Study 3: B2B Pipeline Scraper',
     description:
-      'An end-to-end scraping and qualification pipeline that turns public directories into a ready-to-work sales pipeline.',
-    workflow: [
-      'Google Maps',
-      'Company Website',
-      'Scraper',
-      'Contact Discovery',
-      'AI Classification',
-      'CRM',
-      'Sales Pipeline',
-    ],
-    stack: ['Playwright', 'FastAPI', 'OpenAI', 'Supabase'],
-    link: '#',
-  },
-  {
-    name: 'Bubble ↔ n8n Plugin',
-    tag: 'Automation Bridge',
-    description:
-      'Allows Bubble applications to trigger complex automation workflows through n8n with secure authentication and custom actions.',
+      'An end-to-end data acquisition and qualification engine that extracts directory listings, enriches company insights, runs automated classifications, and syncs clean payloads directly into a CRM pipeline.',
     features: [
-      'API integration',
-      'Workflow execution',
-      'Dynamic parameters',
-      'Error handling',
+      'Automated web scraping and directory traversal via Playwright',
+      'Multi-source company enrichment and decision-maker contact discovery',
+      'Intelligent industry categorisation and scoring rules',
     ],
-    stack: ['JavaScript', 'Bubble Plugin API', 'n8n', 'REST APIs'],
+    stack: ['Playwright', 'FastAPI', 'OpenAI', 'Supabase', 'TypeScript'],
+    image: systemArchitectureImage,
     link: '#',
   },
   {
-    name: 'Mortgage & Loan Management Platform',
-    tag: 'Fintech · B2C',
+    name: 'Enterprise Backend Modules & APIs',
+    tag: 'Case Study 4: Core Backend Engineering',
     description:
-      'Production mortgage platform with customer onboarding, eligibility assessments, secure document management, loan processing, and approval automation.',
+      'Production-tested microservices, authentication layers, webhooks, and payment integration pipelines built for fintech, logistics, and legal tech platforms.',
     features: [
-      'Onboarding',
-      'Eligibility',
-      'Document management',
-      'Loan processing',
-      'Approval workflows',
+      'Secure token authorization, role-based access, and encrypted secrets management',
+      'Real-time webhook lifecycle processing and transaction status tracking',
+      'Optimized SQL query performance indexes and versioned Alembic migrations',
     ],
-    stack: ['Bubble', 'REST APIs', 'SQL'],
-    link: '#',
-  },
-  {
-    name: 'Confirmo Crypto Payments Plugin',
-    tag: 'Payments · Plugin',
-    description:
-      'Payment plugin integrating cryptocurrency payments, invoice management, webhook processing, and real-time transaction tracking for Bubble applications.',
-    features: ['Invoice lifecycle', 'Webhooks', 'Real-time status', 'Crypto payments'],
-    stack: ['JavaScript', 'REST APIs', 'Webhooks'],
-    link: '#',
-  },
-  {
-    name: 'Carbon Management Platform',
-    tag: 'Sustainability · Reporting',
-    description:
-      'Sustainability platform enabling manufacturers to measure, report, and improve carbon efficiency through standardised environmental reporting. EcoVadis Gold Certified.',
-    features: ['Carbon measurement', 'Reporting', 'Analytics', 'Compliance'],
-    stack: ['Bubble', 'REST APIs'],
-    link: '#',
-  },
-  {
-    name: 'AI Tender Library & Kush Law',
-    tag: 'Legal Tech · AI',
-    description:
-      'Backend services and AI-powered applications supporting legal technology and tender management platforms using an API-first architecture.',
-    features: ['Tender search', 'AI extraction', 'Document workflows'],
-    stack: ['Xano', 'OpenAI', 'REST APIs'],
-    link: '#',
-  },
-  {
-    name: 'Solar Installers Platform',
-    tag: 'Operations · Data Sync',
-    description:
-      'Migrated Bubble backends to Xano for scale. Built real-time Salesforce-synced dashboards processing 1,000+ leads daily.',
-    features: ['Backend migration', 'Real-time sync', 'Ops dashboards'],
-    stack: ['Bubble', 'Xano', 'Salesforce API'],
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'REST APIs', 'Docker'],
+    image: asyncPipelineImage,
     link: '#',
   },
 ];
 
-const Card = ({
-  project,
-  index,
-  isVisible,
-}: {
-  project: Project;
-  index: number;
-  isVisible: boolean;
-}) => (
-  <a
-    href={project.link || '#'}
-    target={project.link && project.link !== '#' ? '_blank' : undefined}
-    rel="noopener noreferrer"
-    className={`group block rounded-2xl border border-border hover:border-foreground/30 bg-card p-6 md:p-8 transition-all duration-700 hover:-translate-y-0.5 ${
-      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-    }`}
-    style={{ transitionDelay: isVisible ? `${index * 70}ms` : '0ms' }}
-  >
-    <div className="flex items-start justify-between gap-4 mb-3">
-      <p className="text-[11px] font-medium tracking-widest uppercase text-muted-foreground/70">
-        {project.tag}
-      </p>
-      <ArrowUpRight
-        size={16}
-        className="text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0"
-      />
-    </div>
-    <h3 className="text-lg md:text-xl font-semibold text-foreground mb-3 leading-tight">
-      {project.name}
-    </h3>
-    <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-      {project.description}
-    </p>
-
-    {project.features && (
-      <ul className="flex flex-wrap gap-1.5 mb-5">
-        {project.features.map((f) => (
-          <li
-            key={f}
-            className="text-[11px] tracking-wide text-foreground/80 border border-border rounded-full px-2.5 py-1"
-          >
-            {f}
-          </li>
-        ))}
-      </ul>
-    )}
-
-    {project.workflow && (
-      <div className="mb-5 flex flex-wrap items-center gap-1.5 font-mono text-[11px] text-muted-foreground">
-        {project.workflow.map((node, i, arr) => (
-          <span key={node} className="flex items-center gap-1.5">
-            <span className="border border-border rounded px-2 py-1">{node}</span>
-            {i < arr.length - 1 && <span className="opacity-50">→</span>}
-          </span>
-        ))}
-      </div>
-    )}
-
-    <div className="flex flex-wrap gap-2 pt-2 border-t border-border/60">
-      {project.stack.map((tech) => (
-        <span key={tech} className="text-[11px] font-mono text-muted-foreground">
-          {tech}
-        </span>
-      ))}
-    </div>
-  </a>
-);
-
-const Portfolio = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
-      { threshold: 0.05 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
+export default function SelectedWorkPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navigation />
 
-      <section className="section-padding pt-32" ref={ref}>
-        <div className="container-max">
-          <p
-            className={`text-xs font-medium tracking-[0.3em] text-muted-foreground uppercase mb-6 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
+      <main className="flex-1 w-full max-w-6xl mx-auto px-6 md:px-12 lg:px-16 py-16 space-y-12">
+        <div className="space-y-3 w-full">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
             Selected Work
-          </p>
-          <h1
-            className={`text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 max-w-3xl transition-all duration-700 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            Operational platforms, lead intelligence, and AI automation shipped in production.
           </h1>
-          <p
-            className={`text-base text-muted-foreground max-w-2xl mb-14 transition-all duration-700 delay-200 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            Beyond the featured Opslayer project on the homepage, here's the rest of
-            what I've built for founders and teams across fintech, solar, logistics,
-            legal, and sustainability.
+          <p className="text-sm md:text-base text-slate-400 leading-relaxed max-w-3xl">
+            Operational platforms, robust backend APIs, and production-ready AI workflows engineered for founders and teams across fintech, logistics, legal tech, and SaaS.
           </p>
-
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-            {projects.map((project, index) => (
-              <Card
-                key={project.name}
-                project={project}
-                index={index}
-                isVisible={isVisible}
-              />
-            ))}
-          </div>
         </div>
-      </section>
+
+        <div className="space-y-10">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 md:p-8 hover:border-slate-700 transition-colors items-stretch"
+            >
+              <div className="space-y-5 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">
+                    {project.tag}
+                  </span>
+                  <h2 className="text-xl md:text-2xl font-bold text-white flex items-center gap-2">
+                    {project.name}
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        className="text-slate-400 hover:text-white transition-colors"
+                        aria-label={`View ${project.name}`}
+                      >
+                        <ArrowUpRight className="size-5" />
+                      </a>
+                    )}
+                  </h2>
+                  <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                {project.features && (
+                  <div className="space-y-2 pt-3 border-t border-slate-800/80">
+                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+                      Key Architecture Highlights:
+                    </span>
+                    <ul className="space-y-1.5 text-xs text-slate-300 list-disc list-inside">
+                      {project.features.map((feature, fIdx) => (
+                        <li key={fIdx} className="leading-snug">
+                          <span className="text-slate-200">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.stack.map((tech, sIdx) => (
+                    <span
+                      key={sIdx}
+                      className="px-2.5 py-1 bg-slate-800/90 border border-slate-700/80 text-slate-300 text-[11px] font-medium rounded-lg"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="w-full bg-slate-950 border border-slate-800 rounded-xl overflow-hidden flex items-center justify-center self-stretch min-h-[260px]">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={`${project.name} preview`}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full min-h-[260px] grid place-items-center bg-slate-900/50 text-xs text-slate-500 font-mono">
+                    [ Architecture Preview Asset ]
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
 
       <Footer />
     </div>
   );
-};
-
-export default Portfolio;
+}

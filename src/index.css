@@ -8,67 +8,54 @@
   :root {
     --background: 220 16% 8%;
     --foreground: 210 20% 92%;
-
     --card: 220 16% 11%;
     --card-foreground: 210 20% 92%;
-
     --popover: 220 16% 11%;
     --popover-foreground: 210 20% 92%;
-
     --primary: 210 20% 92%;
     --primary-foreground: 220 16% 8%;
-
     --secondary: 220 14% 16%;
     --secondary-foreground: 210 20% 85%;
-
     --muted: 220 14% 18%;
     --muted-foreground: 215 12% 55%;
-
     --accent: 220 14% 16%;
     --accent-foreground: 210 20% 92%;
-
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-
     --border: 220 14% 18%;
     --input: 220 14% 18%;
     --ring: 210 20% 92%;
-
     --radius: 0.5rem;
-
-    --sidebar-background: 220 16% 8%;
-    --sidebar-foreground: 210 20% 92%;
-    --sidebar-primary: 210 20% 92%;
-    --sidebar-primary-foreground: 220 16% 8%;
-    --sidebar-accent: 220 14% 16%;
-    --sidebar-accent-foreground: 210 20% 92%;
-    --sidebar-border: 220 14% 18%;
-    --sidebar-ring: 210 20% 92%;
   }
-}
 
-@layer base {
   * {
-    @apply border-border;
+    box-sizing: border-box;
   }
 
   html {
     scroll-behavior: smooth;
+    background: #1a1d1d;
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    margin: 0;
+    min-height: 100vh;
+    background: #1a1d1d;
+    color: #edf1f2;
     font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    min-height: 100vh;
+    background: #1a1d1d;
   }
 }
 
 @layer utilities {
   .text-gradient {
     @apply bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent;
-  }
-
-  .link-underline {
-    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-foreground after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
   }
 }
 

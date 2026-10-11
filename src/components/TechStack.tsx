@@ -2,40 +2,28 @@ import { useEffect, useRef, useState } from 'react';
 
 const categories = [
   {
+    title: 'Languages',
+    items: ['JavaScript (ES6+)', 'TypeScript', 'SQL', 'HTML5', 'CSS3 / Sass', 'Python'],
+  },
+  {
     title: 'Frontend',
-    items: ['React', 'React Native', 'Bubble', 'Tailwind CSS', 'TypeScript'],
+    items: ['React', 'Next.js', 'Vite', 'Tailwind', 'Redux Toolkit', 'Zustand'],
   },
   {
     title: 'Backend',
-    items: ['FastAPI', 'Node.js', 'Xano', 'Supabase', 'PostgreSQL'],
+    items: ['Node.js', 'FastAPI', 'PostgreSQL', 'Supabase', 'REST APIs', 'Serverless'],
   },
   {
     title: 'AI',
-    items: [
-      'OpenAI APIs',
-      'Prompt Engineering',
-      'AI Agents',
-      'RAG',
-      'Function Calling',
-    ],
+    items: ['OpenAI APIs', 'Prompt engineering', 'LLM workflows', 'RAG', 'AI evaluation'],
   },
   {
     title: 'Automation',
-    items: ['n8n', 'Make', 'Zapier', 'Webhooks', 'Background Jobs'],
+    items: ['n8n', 'Webhooks', 'Automation design', 'Trigger systems', 'ETL flows'],
   },
   {
-    title: 'Data Engineering',
-    items: [
-      'TypeScript Scrapers',
-      'Playwright',
-      'Puppeteer',
-      'Data Extraction',
-      'Company Enrichment',
-    ],
-  },
-  {
-    title: 'Infrastructure',
-    items: ['Docker', 'GitHub Actions', 'Vercel', 'Render', 'Railway'],
+    title: 'Data & Ops',
+    items: ['Playwright', 'Scraping', 'Lead enrichment', 'SEO / indexing', 'Monitoring'],
   },
 ];
 

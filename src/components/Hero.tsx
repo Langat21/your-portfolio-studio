@@ -33,7 +33,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Gradient fade */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"

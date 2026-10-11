@@ -2,130 +2,100 @@ import { useEffect, useRef, useState } from 'react';
 
 const studies = [
   {
-    title: 'Helping Solar Companies Replace Spreadsheet Operations',
-    industry: 'Solar · Field Service',
+    title: 'Built the React web app with 75 pages for travellers, partners and admins, while also integrating Google Maps search, live order tracking, and QR booking passes.',
+    industry: 'Travel operations · SaaS',
     problem:
-      'Sales, installations, technicians, and customer updates were managed across spreadsheets and WhatsApp. Nothing was visible, nothing was measurable, and every hand-off leaked information.',
+      'Operations were fragmented across internal tools and external channels, leaving teams without a single source of truth for orders, travellers, and partner coordination.',
     solution:
-      'Designed a centralised operations platform integrating CRM, project management, technician scheduling, AI reporting, and customer communication into a single workspace.',
-    results: [
-      'Single operational workspace',
-      'Reduced manual administration',
-      'Improved project visibility',
-      'Automated repetitive workflows',
-    ],
-    architecture: ['Website', 'FastAPI', 'OpenAI', 'Supabase', 'n8n', 'Bubble'],
+      'Designed and shipped a scalable React product surface for core operational workflows: booking journeys, admin views, live status tracking, and partner management.',
+    results: ['75-page product surface', 'Live order tracking', 'QR booking flows', 'Unified partner/admin views'],
+    architecture: ['React', 'TypeScript', 'Maps API', 'Webhooks', 'Dashboard flows'],
   },
   {
-    title: 'Turning Manual Prospecting into a Continuous Pipeline',
-    industry: 'B2B Sales · Lead Engineering',
+    title: 'Built and led an internal travel super-app used by a global luxury group across operations, customer journeys, and partner workflows.',
+    industry: 'Luxury travel · B2B + B2C',
     problem:
-      'Sales teams were manually searching Google Maps and websites for prospects, then copying details into spreadsheets before any outreach could happen.',
+      'The business needed a single operating layer across customer services, back-office coordination, and distributed partner operations without depending on disconnected tools.',
     solution:
-      'Built an automated prospect discovery engine — scraping business sources, enriching companies, discovering contacts, and pushing outreach-ready lead lists straight into the CRM.',
+      'Created a product platform for managing bookings, workflows, customer touchpoints, and internal coordination across multiple business units.',
     results: [
-      'Continuous lead flow',
-      'AI-classified prospects',
-      'CRM-ready enriched data',
-      'Zero manual data entry',
+      'Operational system across business units',
+      'Faster internal coordination',
+      'Reduced fragmented workflows',
+      'Improved service reliability',
     ],
-    architecture: ['Google Maps', 'Scraper', 'AI Extraction', 'Enrichment', 'CRM'],
+    architecture: ['React', 'Workflow tooling', 'Internal APIs', 'Customer journeys', 'Ops dashboards'],
+  },
+  {
+    title: 'Led a team of 10 engineers while shipping production systems, mentoring engineers, and balancing product quality with speed.',
+    industry: 'Engineering leadership · Product delivery',
+    problem:
+      'A growing organisation needed senior technical leadership to maintain quality, reduce bottlenecks, and keep delivery consistent as product complexity increased.',
+    solution:
+      'Led engineering planning, code review, architecture decisions, and stakeholder communication across a fast-moving product environment.',
+    results: [
+      '10 engineer team leadership',
+      'Architecture guidance',
+      'Code quality culture',
+      'Delivery consistency',
+    ],
+    architecture: ['Team leadership', 'Architecture', 'Code review', 'Execution', 'Mentoring'],
   },
 ];
 
 const CaseStudies = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
-      { threshold: 0.05 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section className="section-padding border-t border-border" ref={ref}>
+    <section className="section-padding border-t border-border">
       <div className="container-max">
-        <div
-          className={`max-w-2xl mb-14 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
-        >
-          <p className="text-xs font-medium tracking-[0.3em] text-muted-foreground uppercase mb-4">
-            Case Studies
+        <div className="mb-10 max-w-2xl">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.25em] text-muted-foreground">
+            Case studies
           </p>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight">
-            Real problems. Systems that quietly do the work.
+          <h2 className="text-3xl font-semibold tracking-[-0.05em] text-foreground md:text-5xl">
+            High-ownership work, from product shipping to engineering leadership.
           </h2>
         </div>
 
-        <div className="space-y-10">
-          {studies.map((study, index) => (
-            <div
-              key={study.title}
-              className={`rounded-2xl border border-border bg-card p-8 md:p-10 transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-              }`}
-              style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}
-            >
-              <p className="text-[11px] font-medium tracking-widest uppercase text-muted-foreground/70 mb-3">
+        <div className="space-y-6">
+          {studies.map((study) => (
+            <article key={study.title} className="rounded-[28px] border border-border bg-card/90 p-6 md:p-8">
+              <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground/80">
                 {study.industry}
               </p>
-              <h3 className="text-xl md:text-2xl font-semibold mb-6 max-w-3xl leading-snug">
+              <h3 className="max-w-4xl text-2xl font-semibold tracking-[-0.04em] text-foreground md:text-4xl">
                 {study.title}
               </h3>
 
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="mt-6 grid gap-6 md:grid-cols-3">
                 <div>
-                  <p className="text-[10px] font-medium tracking-widest uppercase text-muted-foreground/60 mb-2">
-                    Problem
-                  </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {study.problem}
-                  </p>
+                  <p className="mb-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground/70">Problem</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{study.problem}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] font-medium tracking-widest uppercase text-muted-foreground/60 mb-2">
-                    Solution
-                  </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {study.solution}
-                  </p>
+                  <p className="mb-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground/70">Solution</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{study.solution}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] font-medium tracking-widest uppercase text-muted-foreground/60 mb-2">
-                    Results
-                  </p>
-                  <ul className="space-y-1.5">
-                    {study.results.map((r) => (
-                      <li key={r} className="text-sm text-foreground/90 flex gap-2">
-                        <span className="text-muted-foreground/50">—</span>
-                        <span>{r}</span>
+                  <p className="mb-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground/70">Outcomes</p>
+                  <ul className="space-y-2 text-sm text-foreground/90">
+                    {study.results.map((result) => (
+                      <li key={result} className="flex gap-2">
+                        <span className="text-muted-foreground">•</span>
+                        <span>{result}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-border">
-                <p className="text-[10px] font-medium tracking-widest uppercase text-muted-foreground/60 mb-3">
-                  Architecture
-                </p>
-                <div className="flex flex-wrap items-center gap-1.5 font-mono text-[11px] text-muted-foreground">
-                  {study.architecture.map((node, i, arr) => (
-                    <span key={node} className="flex items-center gap-1.5">
-                      <span className="border border-border rounded px-2 py-1">{node}</span>
-                      {i < arr.length - 1 && <span className="opacity-50">→</span>}
-                    </span>
-                  ))}
-                </div>
+              <div className="mt-6 flex flex-wrap gap-2 pt-5 border-t border-border">
+                {study.architecture.map((item) => (
+                  <span key={item} className="rounded-full border border-border px-3 py-1.5 text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+                    {item}
+                  </span>
+                ))}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
